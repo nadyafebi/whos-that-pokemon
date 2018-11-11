@@ -68,9 +68,9 @@ export class AppComponent implements OnInit {
         break;
       case 2:
         const length = this.randomPokemon.name.length;
-        let name = this.randomPokemon.name[0];
+        let name = this.randomPokemon.name[0] + ' ';
         for (let i = 0; i < length - 2; i++) {
-          name += '_';
+          name += '_ ';
         }
         name += this.randomPokemon.name[length - 1];
         this.hints.push(name);
