@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PokemonService } from './service/pokemon.service';
 import { Observable } from 'rxjs';
 import { Pokemon } from './pokemon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,9 @@ import { Pokemon } from './pokemon';
 })
 export class AppComponent implements OnInit {
   randomPokemon: Pokemon;
+  randomPokemonImg: string;
 
-  constructor(private pokemonService: PokemonService) {}
+  constructor(private pokemonService: PokemonService, private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
     this.getRandomPokemon();
@@ -22,6 +24,7 @@ export class AppComponent implements OnInit {
     this.pokemonService.getPokemon(randomNum)
       .subscribe((pokemon: Pokemon) => {
         this.randomPokemon = pokemon;
+        this.randomPokemonImg = this.sanitizer.bypassSecurityTrustStyle('url(' + pokemon.sprites.front_default + ')');
       });
   }
 }
