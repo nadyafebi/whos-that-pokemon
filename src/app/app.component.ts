@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PokemonService } from './service/pokemon.service';
 import { Observable } from 'rxjs';
 import { Pokemon } from './pokemon';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +11,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class AppComponent implements OnInit {
   randomPokemon: Pokemon;
-  randomPokemonImg: string;
+  randomPokemonImg: SafeStyle;
   guess: string;
+  showCorrect: boolean;
+  showWrong: boolean;
 
   constructor(private pokemonService: PokemonService, private sanitizer: DomSanitizer) {}
 
