@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
 
   getRandomPokemon() {
     this.loading = true;
-    const randomNum = Math.floor(Math.random() * 802) + 1;
+    const randomNum = this.pokemonService.getPokemonNumber();
     this.pokemonService.getPokemon(randomNum)
       .subscribe((pokemon: Pokemon) => {
         this.randomPokemon = pokemon;
