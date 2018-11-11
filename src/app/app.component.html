@@ -41,8 +41,8 @@
     <br>
     <button (click)="getHint()" mat-raised-button color="accent" [disabled]="hints.length === 3 || hintLoading">GET HINT</button>
   </div>
-  <h2 *ngIf="reveal">{{ capitalize(randomPokemon.name) }}</h2>
-  <p *ngIf="showCorrect" class="text-correct">Correct!</p>
+  <h2 *ngIf="reveal" class="font-override">{{ capitalize(randomPokemon.name) }}</h2>
+  <p *ngIf="showCorrect" class="text-correct font-override">Correct!</p>
   <br>
   <p *ngFor="let hint of hints" class="font-override">{{ hint }}</p>
 </div>
