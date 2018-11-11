@@ -3,6 +3,10 @@
 </mat-toolbar>
 <mat-toolbar id="status" class="mat-elevation-z2">
   <span>Win: <b>{{ winCount }}</b> &nbsp; Lose: <b>{{ loseCount }}</b> &nbsp; Skip: <b>{{ skipCount }}</b></span>
+  <span class="toolbar-spacer"></span>
+  <a href="." mat-icon-button>
+    <mat-icon>refresh</mat-icon>
+  </a>
 </mat-toolbar>
 <div id="content" style="text-align:center" class="mat-typography">
   <div *ngIf="randomPokemon">
