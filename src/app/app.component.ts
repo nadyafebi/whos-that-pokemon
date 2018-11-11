@@ -14,7 +14,8 @@ export class AppComponent implements OnInit {
   randomPokemon: Pokemon;
   randomPokemonImg: SafeStyle;
   guess: string;
-  hint: string;
+  hints: string[] = [];
+  hintLoading: boolean;
   showCorrect: boolean;
   showWrong: boolean;
   showHint: boolean;
@@ -46,15 +47,35 @@ export class AppComponent implements OnInit {
   }
 
   getHint() {
-    this.pokemonService.getPokemonSpecies(this.randomPokemon.id)
-      .subscribe((pokemonSpecies: PokemonSpecies) => {
-        let hint = pokemonSpecies.flavor_text_entries.find(entry => {
-          return entry.language.name === 'en';
-        }).flavor_text;
-        hint = hint.replace(this.capitalize(this.randomPokemon.name) + `'s`, 'Its');
-        this.hint = hint.replace(this.capitalize(this.randomPokemon.name), 'It');
-        this.showHint = true;
-      });
+    switch (this.hints.length) {
+      case 0:
+        const types = this.randomPokemon.types.map((type) => {
+          return this.capitalize(type.type.name);
+        });
+        this.hints.push('Type: ' + types.join('/'));
+        break;
+      case 1:
+        this.hintLoading = true;
+        this.pokemonService.getPokemonSpecies(this.randomPokemon.id)
+          .subscribe((pokemonSpecies: PokemonSpecies) => {
+            let hint = pokemonSpecies.flavor_text_entries.find(entry => {
+              return entry.language.name === 'en';
+            }).flavor_text;
+            hint = hint.replace(this.capitalize(this.randomPokemon.name) + `'s`, 'Its');
+            this.hints.push(hint.replace(this.capitalize(this.randomPokemon.name), 'It'));
+            this.hintLoading = false;
+          });
+        break;
+      case 2:
+        const length = this.randomPokemon.name.length;
+        let name = this.randomPokemon.name[0];
+        for (let i = 0; i < length - 2; i++) {
+          name += '_';
+        }
+        name += this.randomPokemon.name[length - 1];
+        this.hints.push(name);
+        break;
+    }
   }
 
   guessPokemon() {
@@ -63,8 +84,7 @@ export class AppComponent implements OnInit {
       this.reveal = true;
       this.showCorrect = true;
       this.guess = '';
-      this.hint = '';
-      this.showHint = false;
+      this.hints = [];
       setTimeout(() => {
         this.showCorrect = false;
         this.reveal = false;
@@ -82,8 +102,7 @@ export class AppComponent implements OnInit {
   skip() {
     this.skipCount++;
     this.guess = '';
-    this.hint = '';
-    this.showHint = false;
+    this.hints = [];
     this.getRandomPokemon();
   }
 }

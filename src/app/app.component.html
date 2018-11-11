@@ -31,10 +31,10 @@
     </button>
     <button (click)="skip()" mat-raised-button color="accent">SKIP</button>
     <br>
-    <button (click)="getHint()" mat-raised-button color="accent" [disabled]="showHint">GET HINT</button>
+    <button (click)="getHint()" mat-raised-button color="accent" [disabled]="hints.length === 3 || hintLoading">GET HINT</button>
   </div>
   <h2 *ngIf="showCorrect">{{ capitalize(randomPokemon.name) }}</h2>
   <p *ngIf="showCorrect" class="text-correct">Correct!</p>
   <br>
-  <p>{{ hint }}</p>
+  <p *ngFor="let hint of hints">{{ hint }}</p>
 </div>
