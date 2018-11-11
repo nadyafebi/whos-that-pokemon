@@ -103,12 +103,21 @@ export class AppComponent implements OnInit {
         this.getRandomPokemon();
       }, 5000);
     } else if (this.guess) {
-      this.loseCount++;
       this.showWrong = true;
       setTimeout(() => {
         this.showWrong = false;
       }, 1000);
     }
+  }
+
+  giveUp() {
+    this.loseCount++;
+    this.reveal = true;
+    this.reset();
+    setTimeout(() => {
+      this.reveal = false;
+      this.getRandomPokemon();
+    }, 5000);
   }
 
   skip() {
