@@ -20,7 +20,7 @@
   <div *ngIf="!showCorrect" class="poke-buttons">
     <button (click)="guessPokemon()" mat-raised-button color="accent">GUESS</button>
     <br>
-    <button (click)="getHint()" mat-raised-button color="accent">GET HINT</button>
+    <button (click)="getHint()" mat-raised-button color="accent" [disabled]="showHint">GET HINT</button>
   </div>
   <p *ngIf="showCorrect">Correct!</p>
   <p *ngIf="showWrong">Wrong!</p>

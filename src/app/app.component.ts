@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   hint: string;
   showCorrect: boolean;
   showWrong: boolean;
+  showHint: boolean;
   reveal: boolean;
   winCount = 0;
   loseCount = 0;
@@ -48,6 +49,7 @@ export class AppComponent implements OnInit {
         }).flavor_text;
         hint = hint.replace(capitalize(this.randomPokemon.name) + `'s`, 'Its');
         this.hint = hint.replace(capitalize(this.randomPokemon.name), 'It');
+        this.showHint = true;
       });
   }
 
@@ -58,6 +60,7 @@ export class AppComponent implements OnInit {
       this.showCorrect = true;
       this.guess = '';
       this.hint = '';
+      this.showHint = false;
       setTimeout(() => {
         this.showCorrect = false;
         this.reveal = false;
