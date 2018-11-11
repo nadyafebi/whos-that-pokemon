@@ -83,14 +83,13 @@ export class AppComponent implements OnInit {
       this.winCount++;
       this.reveal = true;
       this.showCorrect = true;
-      this.guess = '';
-      this.hints = [];
+      this.reset();
       setTimeout(() => {
         this.showCorrect = false;
         this.reveal = false;
         this.getRandomPokemon();
       }, 5000);
-    } else {
+    } else if (this.guess) {
       this.loseCount++;
       this.showWrong = true;
       setTimeout(() => {
@@ -101,8 +100,12 @@ export class AppComponent implements OnInit {
 
   skip() {
     this.skipCount++;
+    this.reset();
+    this.getRandomPokemon();
+  }
+
+  reset() {
     this.guess = '';
     this.hints = [];
-    this.getRandomPokemon();
   }
 }
