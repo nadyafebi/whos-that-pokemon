@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   randomPokemon: Pokemon;
   randomPokemonImg: SafeStyle;
   guess: string;
+  hint: string;
   showCorrect: boolean;
   showWrong: boolean;
 
@@ -31,6 +32,20 @@ export class AppComponent implements OnInit {
       });
   }
 
+  getHint() {
+    const capitalize = (s) => {
+      return s.charAt(0).toUpperCase() + s.slice(1);
+    };
+
+    this.pokemonService.getPokemonSpecies(this.randomPokemon.id)
+      .subscribe((pokemonSpecies: PokemonSpecies) => {
+        const hint = pokemonSpecies.flavor_text_entries.find(entry => {
+          return entry.language.name === 'en';
+        }).flavor_text;
+        this.hint = hint.replace(capitalize(this.randomPokemon.name), 'It');
+      });
+  }
+
   guessPokemon() {
     if (this.guess === this.randomPokemon.name) {
       this.showCorrect = true;
@@ -38,6 +53,7 @@ export class AppComponent implements OnInit {
         this.showCorrect = false;
       }, 1000);
       this.guess = '';
+      this.hint = '';
       this.getRandomPokemon();
     } else {
       this.showWrong = true;

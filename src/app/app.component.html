@@ -9,7 +9,9 @@
       [style.-webkit-mask-image]="randomPokemonImg">
   </div>
   <input [(ngModel)]="guess" type="text">
-  <button (click)="guessPokemon()" >Guess</button>
+  <button (click)="guessPokemon()">Guess</button>
+  <button (click)="getHint()">Get Hint</button>
   <p *ngIf="showCorrect">Correct!</p>
   <p *ngIf="showWrong">Wrong!</p>
+  <p>{{ hint }}</p>
 </div>
