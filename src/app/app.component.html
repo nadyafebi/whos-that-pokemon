@@ -22,13 +22,15 @@
     <input [(ngModel)]="guess" matInput placeholder="I think this is...">
   </mat-form-field>
   <div *ngIf="!showCorrect" class="poke-buttons">
-    <button (click)="guessPokemon()" mat-raised-button color="accent">GUESS</button>
+    <button (click)="guessPokemon()" mat-raised-button color="accent"
+      [ngClass]="{'wrong-button': showWrong}">
+      GUESS
+    </button>
     <button (click)="skip()" mat-raised-button color="accent">SKIP</button>
     <br>
     <button (click)="getHint()" mat-raised-button color="accent" [disabled]="showHint">GET HINT</button>
   </div>
   <p *ngIf="showCorrect" class="text-correct">Correct!</p>
-  <p *ngIf="showWrong">Wrong!</p>
   <br>
   <p>{{ hint }}</p>
 </div>
