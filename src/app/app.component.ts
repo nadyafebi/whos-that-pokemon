@@ -58,7 +58,7 @@ export class AppComponent implements OnInit {
   }
 
   guessPokemon() {
-    if (this.guess === this.randomPokemon.name) {
+    if (this.guess.toLowerCase() === this.randomPokemon.name) {
       this.winCount++;
       this.reveal = true;
       this.showCorrect = true;
@@ -81,6 +81,9 @@ export class AppComponent implements OnInit {
 
   skip() {
     this.skipCount++;
+    this.guess = '';
+    this.hint = '';
+    this.showHint = false;
     this.getRandomPokemon();
   }
 }
