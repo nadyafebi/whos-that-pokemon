@@ -27,7 +27,7 @@
     <br>
     <button (click)="getHint()" mat-raised-button color="accent" [disabled]="showHint">GET HINT</button>
   </div>
-  <p *ngIf="showCorrect">Correct!</p>
+  <p *ngIf="showCorrect" class="text-correct">Correct!</p>
   <p *ngIf="showWrong">Wrong!</p>
   <br>
   <p>{{ hint }}</p>
