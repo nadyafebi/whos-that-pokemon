@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
   reveal: boolean;
   winCount = 0;
   loseCount = 0;
+  skipCount = 0;
 
   constructor(private pokemonService: PokemonService, private sanitizer: DomSanitizer) {}
 
@@ -73,5 +74,10 @@ export class AppComponent implements OnInit {
         this.showWrong = false;
       }, 1000);
     }
+  }
+
+  skip() {
+    this.skipCount++;
+    this.getRandomPokemon();
   }
 }

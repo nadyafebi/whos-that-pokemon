@@ -2,7 +2,7 @@
   <b>Who's That Pokemon?!</b>
 </mat-toolbar>
 <mat-toolbar id="status" class="mat-elevation-z2">
-  <span>Win: <b>{{ winCount }}</b> &nbsp; Lose: <b>{{ loseCount }}</b></span>
+  <span>Win: <b>{{ winCount }}</b> &nbsp; Lose: <b>{{ loseCount }}</b> &nbsp; Skip: <b>{{ skipCount }}</b></span>
 </mat-toolbar>
 <div id="content" style="text-align:center" class="mat-typography">
   <div *ngIf="randomPokemon">
@@ -14,11 +14,12 @@
       [src]="randomPokemon.sprites.front_default"
       class="reveal-pokemon">
   </div>
-  <mat-form-field>
+  <mat-form-field *ngIf="!showCorrect">
     <input [(ngModel)]="guess" matInput placeholder="I think this is...">
   </mat-form-field>
   <div *ngIf="!showCorrect" class="poke-buttons">
     <button (click)="guessPokemon()" mat-raised-button color="accent">GUESS</button>
+    <button (click)="skip()" mat-raised-button color="accent">SKIP</button>
     <br>
     <button (click)="getHint()" mat-raised-button color="accent" [disabled]="showHint">GET HINT</button>
   </div>
