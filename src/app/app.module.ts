@@ -8,7 +8,8 @@ import { MatToolbarModule,
   MatInputModule,
   MatIconModule,
   MatProgressSpinnerModule,
-  MatDialogModule } from '@angular/material';
+  MatDialogModule,
+  MatCheckboxModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -28,7 +29,8 @@ import { SettingsComponent } from './settings/settings.component';
     MatInputModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent],

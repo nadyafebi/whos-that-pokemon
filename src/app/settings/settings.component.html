@@ -1,3 +1,11 @@
-<p>
-  settings works!
-</p>
+<span>Show Pokemons from:<br><br></span>
+<mat-checkbox [(ngModel)]="generations[0]" (change)="set(0)">Generation I</mat-checkbox><br>
+<mat-checkbox [(ngModel)]="generations[1]" (change)="set(1)">Generation II</mat-checkbox><br>
+<mat-checkbox [(ngModel)]="generations[2]" (change)="set(2)">Generation III</mat-checkbox><br>
+<mat-checkbox [(ngModel)]="generations[3]" (change)="set(3)">Generation IV</mat-checkbox><br>
+<mat-checkbox [(ngModel)]="generations[4]" (change)="set(4)">Generation V</mat-checkbox><br>
+<mat-checkbox [(ngModel)]="generations[5]" (change)="set(5)">Generation VI</mat-checkbox><br>
+<mat-checkbox [(ngModel)]="generations[6]" (change)="set(6)">Generation VII</mat-checkbox><br>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class PokemonService {
   totalPokemon = [151, 251, 386, 494, 649, 721, 802];
-  generation = [true, true, true, true, true, true, true];
+  generations = [true, true, true, true, true, true, true];
 
   constructor(private http: HttpClient) { }
 
@@ -26,7 +26,7 @@ export class PokemonService {
   getPokemonNumber() {
     const randomNums = [];
     for (let i = 0; i < 7; i++) {
-      if (this.generation[i]) {
+      if (this.generations[i]) {
         let randomNum;
         if (i === 0) {
           randomNum = this.randomRange(1, this.totalPokemon[i]);
@@ -37,5 +37,16 @@ export class PokemonService {
       }
     }
     return randomNums[this.randomRange(0, randomNums.length - 1)];
+  }
+
+  getGenerations() {
+    return this.generations;
+  }
+
+  setGeneration(num: number, val: boolean) {
+    this.generations[num] = val;
+    if (!this.generations.includes(true)) {
+      this.generations[0] = true;
+    }
   }
 }
