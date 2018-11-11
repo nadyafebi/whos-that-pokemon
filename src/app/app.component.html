@@ -1,9 +1,10 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Who's that Pokemon?!
-  </h1>
-  <p>Win: {{ winCount }} &nbsp; Lose: {{ loseCount }}</p>
+<mat-toolbar color="primary">
+  <b>Who's That Pokemon?!</b>
+</mat-toolbar>
+<mat-toolbar id="status" class="mat-elevation-z2">
+  <span>Win: <b>{{ winCount }}</b> &nbsp; Lose: <b>{{ loseCount }}</b></span>
+</mat-toolbar>
+<div id="content" style="text-align:center" class="mat-typography">
   <div *ngIf="randomPokemon">
     <img *ngIf="!reveal"
       src="/assets/mask.png"
@@ -13,12 +14,19 @@
       [src]="randomPokemon.sprites.front_default"
       class="reveal-pokemon">
   </div>
-  <input [(ngModel)]="guess" type="text">
+  <mat-form-field>
+    <input [(ngModel)]="guess" matInput placeholder="I think this is...">
+  </mat-form-field>
+  <br>
+  <br>
   <div *ngIf="!showCorrect">
-    <button (click)="guessPokemon()">Guess</button>
-    <button (click)="getHint()">Get Hint</button>
+    <button (click)="guessPokemon()" mat-raised-button color="accent">GUESS</button>
+    <br>
+    <br>
+    <button (click)="getHint()" mat-raised-button color="accent">GET HINT</button>
   </div>
   <p *ngIf="showCorrect">Correct!</p>
   <p *ngIf="showWrong">Wrong!</p>
+  <br>
   <p>{{ hint }}</p>
 </div>

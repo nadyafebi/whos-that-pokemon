@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+@include mat-core();
+$poke-app-primary: mat-palette($mat-red);
+$poke-app-accent:  mat-palette($mat-orange, A200, A100, A400);
+$poke-app-warn:    mat-palette($mat-red);
+$poke-app-theme: mat-light-theme($poke-app-primary, $poke-app-accent, $poke-app-warn);
+$poke-typography: mat-typography-config(
+    $font-family: 'Source Sans Pro'
+);
+@include angular-material-theme($poke-app-theme);
+@include mat-core($poke-typography);
+
+body {
+  margin: 0;
+  font-family: 'Source Sans Pro', sans-serif !important;
+}
+
+button {
+  font-weight: bold !important;
+}

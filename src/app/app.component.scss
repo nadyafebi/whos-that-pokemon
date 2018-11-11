@@ -1,5 +1,14 @@
 $size: 25vh;
 
+#content {
+  margin: 8px;
+}
+
+#status {
+  height: 42px;
+  font-size: 16px;
+}
+
 .hidden-pokemon {
   height: $size;
   width: $size;
