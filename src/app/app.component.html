@@ -33,6 +33,7 @@
     <br>
     <button (click)="getHint()" mat-raised-button color="accent" [disabled]="showHint">GET HINT</button>
   </div>
+  <h2 *ngIf="showCorrect">{{ capitalize(randomPokemon.name) }}</h2>
   <p *ngIf="showCorrect" class="text-correct">Correct!</p>
   <br>
   <p>{{ hint }}</p>

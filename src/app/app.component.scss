@@ -40,10 +40,15 @@ $size: 25vh;
   flex: 1 1 auto;
 }
 
+h2 {
+  font-weight: bold;
+  font-size: 32px;
+}
+
 .text-correct {
   padding-top: 12px;
-  font-size: 36px;
-  color: green;
+  font-size: 24px;
+  color: #8bc34a;
   font-weight: bold;
 }
 

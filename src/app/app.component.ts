@@ -30,6 +30,10 @@ export class AppComponent implements OnInit {
     this.getRandomPokemon();
   }
 
+  capitalize(s: string): string {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
+
   getRandomPokemon() {
     this.loading = true;
     const randomNum = Math.floor(Math.random() * 807) + 1;
@@ -42,17 +46,13 @@ export class AppComponent implements OnInit {
   }
 
   getHint() {
-    const capitalize = (s) => {
-      return s.charAt(0).toUpperCase() + s.slice(1);
-    };
-
     this.pokemonService.getPokemonSpecies(this.randomPokemon.id)
       .subscribe((pokemonSpecies: PokemonSpecies) => {
         let hint = pokemonSpecies.flavor_text_entries.find(entry => {
           return entry.language.name === 'en';
         }).flavor_text;
-        hint = hint.replace(capitalize(this.randomPokemon.name) + `'s`, 'Its');
-        this.hint = hint.replace(capitalize(this.randomPokemon.name), 'It');
+        hint = hint.replace(this.capitalize(this.randomPokemon.name) + `'s`, 'Its');
+        this.hint = hint.replace(this.capitalize(this.randomPokemon.name), 'It');
         this.showHint = true;
       });
   }
