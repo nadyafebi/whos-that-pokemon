@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   loseCount = 0;
   skipCount = 0;
   loading: boolean;
+  useAudio = true;
 
   constructor(private pokemonService: PokemonService, private sanitizer: DomSanitizer) {}
 
@@ -36,10 +37,12 @@ export class AppComponent implements OnInit {
   }
 
   playAudio() {
-    const audio = new Audio();
-    audio.src = '/assets/whos-that-pokemon.mp3';
-    audio.load();
-    audio.play();
+    if (this.useAudio) {
+      const audio = new Audio();
+      audio.src = '/assets/whos-that-pokemon.mp3';
+      audio.load();
+      audio.play();
+    }
   }
 
   getRandomPokemon() {
@@ -115,5 +118,9 @@ export class AppComponent implements OnInit {
   reset() {
     this.guess = '';
     this.hints = [];
+  }
+
+  toggleAudio() {
+    this.useAudio = !this.useAudio;
   }
 }

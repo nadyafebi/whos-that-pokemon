@@ -4,6 +4,9 @@
 <mat-toolbar id="status" class="mat-elevation-z2">
   <span>Win: <b>{{ winCount }}</b> &nbsp; Lose: <b>{{ loseCount }}</b> &nbsp; Skip: <b>{{ skipCount }}</b></span>
   <span class="toolbar-spacer"></span>
+  <button (click)="toggleAudio()" mat-icon-button>
+    <mat-icon>{{ useAudio ? 'volume_up' : 'volume_off' }}</mat-icon>
+  </button>
   <a href="." mat-icon-button>
     <mat-icon>refresh</mat-icon>
   </a>
