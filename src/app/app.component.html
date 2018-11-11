@@ -22,7 +22,7 @@
       class="reveal-pokemon">
   </div>
   <mat-form-field *ngIf="!showCorrect" color="accent">
-    <input [(ngModel)]="guess" matInput placeholder="I think this is...">
+    <input [(ngModel)]="guess" matInput placeholder="I think this is..." autocomplete="off">
   </mat-form-field>
   <div *ngIf="!showCorrect" class="poke-buttons">
     <button (click)="guessPokemon()" mat-raised-button color="accent"
