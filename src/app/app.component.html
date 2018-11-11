@@ -18,7 +18,7 @@
       [src]="randomPokemon.sprites.front_default"
       class="reveal-pokemon">
   </div>
-  <mat-form-field *ngIf="!showCorrect">
+  <mat-form-field *ngIf="!showCorrect" color="accent">
     <input [(ngModel)]="guess" matInput placeholder="I think this is...">
   </mat-form-field>
   <div *ngIf="!showCorrect" class="poke-buttons">
