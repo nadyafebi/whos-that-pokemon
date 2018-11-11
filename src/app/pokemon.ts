@@ -1,7 +1,10 @@
+import { PokemonType } from './pokemon-type';
+
 export interface Pokemon {
-  name: String;
-  id: Number;
+  name: string;
+  id: number;
+  types: PokemonType[];
   sprites: {
-    front_default: String;
+    front_default: string;
   };
 }
