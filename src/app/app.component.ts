@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PokemonService } from './service/pokemon.service';
 import { Observable } from 'rxjs';
 import { Pokemon } from './pokemon';
+import { PokemonSpecies } from './pokemon-species';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 @Component({
@@ -16,8 +17,8 @@ export class AppComponent implements OnInit {
   hint: string;
   showCorrect: boolean;
   showWrong: boolean;
-  winCount: Number = 0;
-  loseCount: Number = 0;
+  winCount = 0;
+  loseCount = 0;
 
   constructor(private pokemonService: PokemonService, private sanitizer: DomSanitizer) {}
 
@@ -41,9 +42,10 @@ export class AppComponent implements OnInit {
 
     this.pokemonService.getPokemonSpecies(this.randomPokemon.id)
       .subscribe((pokemonSpecies: PokemonSpecies) => {
-        const hint = pokemonSpecies.flavor_text_entries.find(entry => {
+        let hint = pokemonSpecies.flavor_text_entries.find(entry => {
           return entry.language.name === 'en';
         }).flavor_text;
+        hint = hint.replace(capitalize(this.randomPokemon.name) + `'s`, 'Its');
         this.hint = hint.replace(capitalize(this.randomPokemon.name), 'It');
       });
   }
