@@ -12,6 +12,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class AppComponent implements OnInit {
   randomPokemon: Pokemon;
   randomPokemonImg: string;
+  guess: string;
 
   constructor(private pokemonService: PokemonService, private sanitizer: DomSanitizer) {}
 
@@ -26,5 +27,21 @@ export class AppComponent implements OnInit {
         this.randomPokemon = pokemon;
         this.randomPokemonImg = this.sanitizer.bypassSecurityTrustStyle('url(' + pokemon.sprites.front_default + ')');
       });
+  }
+
+  guessPokemon() {
+    if (this.guess === this.randomPokemon.name) {
+      this.showCorrect = true;
+      setTimeout(() => {
+        this.showCorrect = false;
+      }, 1000);
+      this.guess = '';
+      this.getRandomPokemon();
+    } else {
+      this.showWrong = true;
+      setTimeout(() => {
+        this.showWrong = false;
+      }, 1000);
+    }
   }
 }

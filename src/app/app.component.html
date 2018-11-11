@@ -8,4 +8,8 @@
       src="/assets/mask.png"
       [style.-webkit-mask-image]="randomPokemonImg">
   </div>
+  <input [(ngModel)]="guess" type="text">
+  <button (click)="guessPokemon()" >Guess</button>
+  <p *ngIf="showCorrect">Correct!</p>
+  <p *ngIf="showWrong">Wrong!</p>
 </div>
