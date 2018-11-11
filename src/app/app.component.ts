@@ -35,6 +35,13 @@ export class AppComponent implements OnInit {
     return s.charAt(0).toUpperCase() + s.slice(1);
   }
 
+  playAudio() {
+    const audio = new Audio();
+    audio.src = '/assets/whos-that-pokemon.mp3';
+    audio.load();
+    audio.play();
+  }
+
   getRandomPokemon() {
     this.loading = true;
     const randomNum = Math.floor(Math.random() * 802) + 1;
@@ -43,6 +50,7 @@ export class AppComponent implements OnInit {
         this.randomPokemon = pokemon;
         this.randomPokemonImg = this.sanitizer.bypassSecurityTrustStyle('url(' + pokemon.sprites.front_default + ')');
         this.loading = false;
+        this.playAudio();
       });
   }
 
