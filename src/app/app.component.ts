@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
   winCount = 0;
   loseCount = 0;
   skipCount = 0;
+  loading: boolean;
 
   constructor(private pokemonService: PokemonService, private sanitizer: DomSanitizer) {}
 
@@ -30,11 +31,13 @@ export class AppComponent implements OnInit {
   }
 
   getRandomPokemon() {
+    this.loading = true;
     const randomNum = Math.floor(Math.random() * 807) + 1;
     this.pokemonService.getPokemon(randomNum)
       .subscribe((pokemon: Pokemon) => {
         this.randomPokemon = pokemon;
         this.randomPokemonImg = this.sanitizer.bypassSecurityTrustStyle('url(' + pokemon.sprites.front_default + ')');
+        this.loading = false;
       });
   }
 

@@ -8,7 +8,10 @@
     <mat-icon>refresh</mat-icon>
   </a>
 </mat-toolbar>
-<div id="content" style="text-align:center" class="mat-typography">
+<div *ngIf="loading" id="loading-container">
+  <mat-spinner color="accent"></mat-spinner>
+</div>
+<div *ngIf="!loading" id="content" style="text-align:center" class="mat-typography">
   <div *ngIf="randomPokemon">
     <img *ngIf="!reveal"
       src="/assets/mask.png"

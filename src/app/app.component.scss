@@ -1,5 +1,12 @@
 $size: 25vh;
 
+#loading-container {
+  height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #content {
   margin: 8px;
   margin-top: 15vh;
