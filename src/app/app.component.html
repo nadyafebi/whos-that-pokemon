@@ -5,13 +5,19 @@
   </h1>
   <p>Win: {{ winCount }} &nbsp; Lose: {{ loseCount }}</p>
   <div *ngIf="randomPokemon">
-    <img class="hidden-pokemon"
+    <img *ngIf="!reveal"
       src="/assets/mask.png"
-      [style.-webkit-mask-image]="randomPokemonImg">
+      [style.-webkit-mask-image]="randomPokemonImg"
+      class="hidden-pokemon">
+    <img *ngIf="reveal"
+      [src]="randomPokemon.sprites.front_default"
+      class="reveal-pokemon">
   </div>
   <input [(ngModel)]="guess" type="text">
-  <button (click)="guessPokemon()">Guess</button>
-  <button (click)="getHint()">Get Hint</button>
+  <div *ngIf="!showCorrect">
+    <button (click)="guessPokemon()">Guess</button>
+    <button (click)="getHint()">Get Hint</button>
+  </div>
   <p *ngIf="showCorrect">Correct!</p>
   <p *ngIf="showWrong">Wrong!</p>
   <p>{{ hint }}</p>

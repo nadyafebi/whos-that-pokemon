@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   hint: string;
   showCorrect: boolean;
   showWrong: boolean;
+  reveal: boolean;
   winCount = 0;
   loseCount = 0;
 
@@ -53,13 +54,15 @@ export class AppComponent implements OnInit {
   guessPokemon() {
     if (this.guess === this.randomPokemon.name) {
       this.winCount++;
+      this.reveal = true;
       this.showCorrect = true;
-      setTimeout(() => {
-        this.showCorrect = false;
-      }, 1000);
       this.guess = '';
       this.hint = '';
-      this.getRandomPokemon();
+      setTimeout(() => {
+        this.showCorrect = false;
+        this.reveal = false;
+        this.getRandomPokemon();
+      }, 5000);
     } else {
       this.loseCount++;
       this.showWrong = true;

@@ -1,7 +1,13 @@
 $size: 25vh;
+
 .hidden-pokemon {
   height: $size;
   width: $size;
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: $size;
+}
+
+.reveal-pokemon {
+  height: $size;
+  width: $size;
 }
