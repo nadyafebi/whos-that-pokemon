@@ -17,11 +17,8 @@
   <mat-form-field>
     <input [(ngModel)]="guess" matInput placeholder="I think this is...">
   </mat-form-field>
-  <br>
-  <br>
-  <div *ngIf="!showCorrect">
+  <div *ngIf="!showCorrect" class="poke-buttons">
     <button (click)="guessPokemon()" mat-raised-button color="accent">GUESS</button>
-    <br>
     <br>
     <button (click)="getHint()" mat-raised-button color="accent">GET HINT</button>
   </div>

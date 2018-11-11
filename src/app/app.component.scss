@@ -20,3 +20,9 @@ $size: 25vh;
   height: $size;
   width: $size;
 }
+
+.poke-buttons {
+  button {
+    margin-bottom: 8px;
+  }
+}
