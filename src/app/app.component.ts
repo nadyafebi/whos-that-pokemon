@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { Pokemon } from './pokemon';
 import { PokemonSpecies } from './pokemon-species';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
+import { MatDialog } from '@angular/material';
+import { SettingsComponent } from './settings/settings.component';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +28,7 @@ export class AppComponent implements OnInit {
   loading: boolean;
   useAudio = true;
 
-  constructor(private pokemonService: PokemonService, private sanitizer: DomSanitizer) {}
+  constructor(public dialog: MatDialog, private pokemonService: PokemonService, private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
     this.getRandomPokemon();
@@ -122,5 +124,9 @@ export class AppComponent implements OnInit {
 
   toggleAudio() {
     this.useAudio = !this.useAudio;
+  }
+
+  openSettings() {
+    this.dialog.open(SettingsComponent);
   }
 }
