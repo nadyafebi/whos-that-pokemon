@@ -6,6 +6,7 @@ import { PokemonSpecies } from './pokemon-species';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material';
 import { SettingsComponent } from './settings/settings.component';
+import { InfoComponent } from './dialog/info/info.component';
 
 @Component({
   selector: 'app-root',
@@ -137,5 +138,9 @@ export class AppComponent implements OnInit {
 
   openSettings() {
     this.dialog.open(SettingsComponent);
+  }
+
+  openInfo() {
+    this.dialog.open(InfoComponent);
   }
 }

@@ -13,11 +13,13 @@ import { MatToolbarModule,
 
 import { AppComponent } from './app.component';
 import { SettingsComponent } from './settings/settings.component';
+import { InfoComponent } from './dialog/info/info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SettingsComponent
+    SettingsComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,6 @@ import { SettingsComponent } from './settings/settings.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [SettingsComponent]
+  entryComponents: [SettingsComponent, InfoComponent]
 })
 export class AppModule { }
