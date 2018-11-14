@@ -4,3 +4,8 @@ export interface PokemonEntry {
     name: string;
   };
 }
+
+export interface PokemonSpecies {
+  id: number;
+  flavor_text_entries: PokemonEntry[];
+}

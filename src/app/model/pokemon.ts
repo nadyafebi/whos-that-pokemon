@@ -1,4 +1,10 @@
-import { PokemonType } from './pokemon-type';
+export interface PokemonType {
+  slot: number;
+  type: {
+    name: string;
+    url: string;
+  };
+}
 
 export interface Pokemon {
   name: string;

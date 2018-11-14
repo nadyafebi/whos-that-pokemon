@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from './service/pokemon.service';
 import { Observable } from 'rxjs';
-import { Pokemon } from './pokemon';
-import { PokemonSpecies } from './pokemon-species';
+import { Pokemon } from './model/pokemon';
+import { PokemonSpecies } from './model/pokemon-species';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material';
 import { SettingsComponent } from './dialog/settings/settings.component';
