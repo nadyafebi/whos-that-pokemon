@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { PokemonService } from '../service/pokemon.service';
+import { PokemonService } from '../../service/pokemon.service';
 
 @Component({
   selector: 'app-settings',

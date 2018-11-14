@@ -12,7 +12,7 @@ import { MatToolbarModule,
   MatCheckboxModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { SettingsComponent } from './settings/settings.component';
+import { SettingsComponent } from './dialog/settings/settings.component';
 import { InfoComponent } from './dialog/info/info.component';
 
 @NgModule({
