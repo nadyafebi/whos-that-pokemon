@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Pokemon } from './model/pokemon';
 import { PokemonSpecies } from './model/pokemon-species';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { SettingsComponent } from './dialog/settings/settings.component';
 import { InfoComponent } from './dialog/info/info.component';
 
