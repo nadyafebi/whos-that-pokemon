@@ -12,11 +12,11 @@ export class PokemonService {
   constructor(private http: HttpClient) { }
 
   getPokemon(pokeNum: Number): Observable<any> {
-    return this.http.get('https://cors.io/?https://pokeapi.co/api/v2/pokemon/' + pokeNum);
+    return this.http.get('/api/pokemon/' + pokeNum);
   }
 
   getPokemonSpecies(pokeNum: Number): Observable<any> {
-    return this.http.get('https://cors.io/?https://pokeapi.co/api/v2/pokemon-species/' + pokeNum);
+    return this.http.get('/api/pokemon-species/' + pokeNum);
   }
 
   randomRange(min: number, max: number) {

@@ -1,16 +1,29 @@
-//Install express server
 const express = require('express');
+const fetch = require('node-fetch');
 const path = require('path');
-
 const app = express();
 
-// Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/who-is-that-pokemon'));
+const dist = '/dist/who-is-that-pokemon';
 
-app.get('/*', function(req,res) {
+app.use(express.static(__dirname + dist));
 
-res.sendFile(path.join(__dirname+'/dist/who-is-that-pokemon/index.html'));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname + dist + '/index.html'));
 });
 
-// Start the app by listening on the default Heroku port
+app.get('/api/pokemon/:id', async (req, res) => {
+    const id = req.params.id;
+    let result = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+    result = await result.json();
+    res.send(result);
+});
+
+app.get('/api/pokemon-species/:id', async (req, res) => {
+    const id = req.params.id;
+    let result = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
+    result = await result.json();
+    res.send(result);
+});
+
+// Start the app.
 app.listen(process.env.PORT || 8080);
